@@ -123,11 +123,8 @@ def log(msg, kind="ok"):
     else:
         st.markdown(f"<div class='{cls} ok'>{msg}</div>", unsafe_allow_html=True)
 
-# ------------------- KEEP YOUR EXISTING LOGIC -------------------
-# (from here, paste your original Step 1 → Step 6 code without touching logic)
 
-
-# ---------------- Step 1 ----------------
+# ---------------- Stage 1 ----------------
 st.header("Create dummy APK files for verification")
 if st.button("Create & Check Files"):
     with open("first_code.bin", "wb") as f:
@@ -144,7 +141,7 @@ if st.button("Create & Check Files"):
     with open("second_code.bin", "rb") as f:
         st.download_button("⬇ Download second_code.bin", f.read(), file_name="second_code.bin")
 
-# ---------------- Step 2 ----------------
+# ---------------- Stage 2 ----------------
 st.header("Generating hashes, keys, signatures and a tampered signature for demo")
 if st.button("Generate & Check"):
     if not file_exists_warn("first_code.bin") or not file_exists_warn("second_code.bin"):
@@ -194,7 +191,7 @@ if st.button("Generate & Check"):
         st.download_button("⬇ Download signature.bin (original)", st.session_state.signature, file_name="signature.bin")
         st.download_button("⬇ Download tampered_signature.bin (fake)", st.session_state.tampered_signature, file_name="tampered_signature.bin")
 
-# ---------------- Step 3 ----------------
+# ---------------- Stage 3 ----------------
 st.header("3rd Party computes or chooses a tampered I'")
 choice = st.radio("Which I' should the 3rd party use?", ("Compute from first_code.bin (correct)", "Use Tampered I_tampered (fake)"))
 if st.button("Choose I'"):
@@ -221,7 +218,7 @@ if st.button("Choose I'"):
     else:
         st.info("signature.bin not found yet — run Step 2.")
 
-# ---------------- Step 4 ----------------
+# ---------------- Stage 4 ----------------
 st.header("Bank Verification of I == I'")
 if st.button("Verify"):
     if st.session_state.I_prime is None:
@@ -244,7 +241,7 @@ if st.button("Verify"):
         with open("second_code.bin", "rb") as f:
             st.download_button("⬇ Download second_code.bin", f.read(), file_name="second_code.bin")
 
-# ---------------- Step 5 ----------------
+# ---------------- Stage 5 ----------------
 st.header("Final Verification (RSA)")
 sig_choice = st.radio("Which Signature should be used?", ("Original signature.bin", "Tampered tampered_signature.bin"))
 
@@ -287,7 +284,7 @@ if st.button("Run Step 5 — Verify"):
                 st.error(f"⚠ Verification error: {e}")
 
 
-# ---------------- Step 6 ----------------
+# ---------------- Stage 6 ----------------
 st.header("Compare signed data (bank's I+J) vs (computed I'+J)")
 if st.button("Compare"):
     if st.session_state.I is None or st.session_state.J is None:
@@ -303,4 +300,5 @@ if st.button("Compare"):
             st.error("Verification Failed Application cannot be installed")
 
 st.markdown("---")
+
 st.write("Copyright © 2025 HashByte Demo. All rights reserved.")

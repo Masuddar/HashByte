@@ -34,31 +34,32 @@ with st.sidebar:
         st.write(f"- {member}")
 
 # ----------------- CSS / Theme -----------------
+# ----------------- CSS / Theme -----------------
 st.markdown(
     """
     <style>
     :root {
-        --bg-start: #0a0f0f;
-        --bg-end: #091b0b;
-        --accent: #00ffa8;
-        --accent-2: #05ff66;
-        --text: #e6fff2;
-        --warn: #ffb84d;
-        --err: #ff4d4d;
-        --console-bg: rgba(0,0,0,0.82);
-        --border: rgba(0,255,168,0.45);
+        --bg-start: #0d1117;   /* GitHub dark */
+        --bg-end: #161b22;     /* Subtle navy */
+        --accent: #3a86ff;     /* Calm professional blue */
+        --accent-2: #4cc9f0;   /* Soft teal */
+        --text: #f0f0f0;       /* Neutral light text */
+        --warn: #f4a261;       /* Warm amber */
+        --err: #e63946;        /* Muted red */
+        --console-bg: rgba(20, 25, 35, 0.9);
+        --border: rgba(58,134,255,0.45);
     }
     .stApp {
         background: radial-gradient(1200px 800px at 20% 10%, var(--bg-end), var(--bg-start)) fixed;
         color: var(--text) !important;
-        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Courier New", monospace;
+        font-family: "Segoe UI", Roboto, sans-serif;
     }
     .title-glow {
         font-size: 40px !important;
         text-align: center;
-        font-weight: 800;
+        font-weight: 700;
         color: var(--accent);
-        text-shadow: 0 0 10px rgba(0,255,168,0.7), 0 0 22px rgba(0,255,168,0.5);
+        text-shadow: 0 0 12px rgba(58,134,255,0.4), 0 0 22px rgba(58,134,255,0.2);
         margin: 6px 0 18px 0;
     }
     .console {
@@ -78,13 +79,13 @@ st.markdown(
         color: var(--accent);
         border: 1px solid var(--accent);
         border-radius: 10px;
-        font-weight: 700;
+        font-weight: 600;
         padding: 8px 14px;
         transition: all 0.15s ease-in-out;
     }
     div.stButton > button:hover, .stDownloadButton > button:hover {
         background: var(--accent);
-        color: #00130a;
+        color: white;
     }
     </style>
     """,
@@ -302,3 +303,4 @@ if st.button("Compare"):
 st.markdown("---")
 
 st.write("Copyright © 2025 HashByte Demo. All rights reserved.")
+
